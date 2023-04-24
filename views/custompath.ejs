@@ -1,0 +1,156 @@
+<%- include("partials/header") %>
+
+    <body>
+
+
+        <% if (empty) { %>
+            <div class="div-flex-row">
+                <div class="sidepanel">
+                    <div class="sidepanel-div-1">
+                        <h2>Secrets</h2>
+                        <form action="/choosetype" method="get">
+                            <button class="btn-white" type="submit" name="tellasecret" value="1">Post a secret</button>
+                        </form>
+                    </div>
+                    <div class="sidepanel-div-2">
+                        <a href="/">Home</a>
+                        <a href="/#contact-us">Contact Us</a>
+                    </div>
+                </div>
+                <div class="div-flex-col div-secrets-panel mb-view">
+                    <i>Keep the link in the url above</i>
+                    <div class="div-link grey-bg">
+                        <p>Share this link to get messages -&nbsp;</p><span id="c-link">
+                            <%= customLink %>
+                        </span>
+
+                        <svg id="copyLinkToClipboard" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="currentColor" class="bi bi-clipboard grey-hover" viewBox="0 0 16 16">
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                            <path
+                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                        </svg>
+                        <svg id="copiedLinkToClipboard" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z" />
+                        </svg>
+
+                    </div>
+                    <p class="custom-path-name">
+                        <%= name %>
+                    </p>
+                    <p class="border-bottom">Messages sent to you will appear below</p>
+                    <div class="dedicated-messages-panel">
+                        <div class="div-empty-state" style="margin-top: 3rem;">
+                            <img class="empty-state-image" src="/images/empty.png" alt="empty" />
+                            <p>There are no messages to show at this point of time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+                <% if (error) { %>
+                    <div class="div-empty-state margin-top-less">
+                        <p style="margin-bottom: -1rem;z-index: 10;font-size: 3rem;">Link is invalid or expired.</p>
+                        <img class="empty-state-image invalid-image size-md ne-margin-top" src="/images/invalid.jpg"
+                            alt="empty" />
+                        <a href="/">Home</a>
+                    </div>
+                    <% } %>
+                        <% if (!empty && !error) { %>
+                            <div class="div-flex-row">
+                                <div class="sidepanel">
+                                    <div class="sidepanel-div-1">
+                                        <h2>Secrets</h2>
+                                        <form action="/choosetype" method="get">
+                                            <button class="btn-white" type="submit" name="tellasecret" value="1">Post a
+                                                secret</button>
+                                        </form>
+                                    </div>
+                                    <div class="sidepanel-div-2">
+                                        <a href="/">Home</a>
+                                        <a href="/#contact-us">Contact Us</a>
+                                    </div>
+                                </div>
+                                <div class="div-flex-col div-secrets-panel mb-view">
+                                    <i>Keep the link in the url above</i>
+                                    <div class="div-link grey-bg">
+                                        <p>Share this link to get messages -&nbsp;</p><span id="c-link">
+                                            <%= customLink %>
+                                        </span>
+
+                                        <svg id="copyLinkToClipboard" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="currentColor" class="bi bi-clipboard grey-hover"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                            <path
+                                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                        </svg>
+                                        <svg id="copiedLinkToClipboard" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="currentColor" class="bi bi-clipboard-check-fill"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+                                            <path
+                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z" />
+                                        </svg>
+
+                                    </div>
+                                    <p class="custom-path-name">
+                                        <%= name %>
+                                    </p>
+                                    <p class="border-bottom">Messages sent to you will appear below</p>
+                                    <div class="dedicated-messages-panel">
+                                        <div class="scrollable grid-container">
+                                            <% messages.forEach( (message, i)=> { %>
+                                                <div class="secret-card">
+                                                    <p id="messageBody<%= i %>">
+                                                        <%= message.message %>
+                                                    </p>
+                                                    <div class="grey-bg div-flex-row flex-justify">
+                                                        <svg id="copyToClipboard<%= i %>"
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            fill="currentColor"
+                                                            class="bi bi-clipboard grey-hover copyToClipboardEvent"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path
+                                                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                                        </svg>
+                                                        <svg id="copiedToClipboard<%= i %>"
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            fill="currentColor"
+                                                            class="bi bi-clipboard-check-fill copiedToClipboardEvent"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+                                                            <path
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z" />
+                                                        </svg>
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            fill="currentColor"
+                                                            class="bi bi-share grey-hover shareEvent"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <script src="/custompath.js" async defer></script>
+    </body>
+
+    <%- include("partials/footer") %>

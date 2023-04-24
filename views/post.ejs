@@ -1,0 +1,58 @@
+<%- include("partials/header") -%>
+
+    <body>
+        <% if (uploadSuccess) { %>
+            <div class="upload-success">
+                <p>Secret Upload Success</p>
+                <img src="/images/checkbox.png" alt="success" />
+                <a href="/secrets">Explore secrets</a>
+                <a href="/">Home</a>
+            </div>
+            <% } %>
+                <% if (error) { %>
+                    <div class="upload-error">
+                        <p>Secret Upload Error</p>
+                        <img src="/images/error.png" alt="error" />
+                        <span>Try again after some time.</span>
+                        <a href="/">Home</a>
+                    </div>
+                    <% } %>
+
+                        <% if (!uploadSuccess && !error) { %>
+                            <div class="div-flex-col div-post-form">
+
+                                <h1 class="h1-black"
+                                    style="font-family: 'Dancing Script', cursive;margin-top: 4rem;margin-bottom: 0.2rem;">
+                                    Post a secret
+                                </h1>
+                                <hr>
+
+                                <p class="form-p">
+                                    Don't worry, your name or any personal details won't appear.
+                                </p>
+                                <form class="div-flex-col form-post" action="/post" method="post">
+                                    <% if (dedication) { %>
+                                        <div class="div-flex-row" style="margin-bottom: -1rem;">
+                                            <p id="form-p1" class="grey-bg"> Dedicate to </p>
+                                            <input id="postDedicateTo" type="text" class="input-dedication"
+                                                name="dedicateTo" placeholder="Name of the person" required>
+                                        </div>
+                                        <% } %>
+                                            <div class="div-flex-row">
+                                                <p id="form-p2" class="grey-bg"> <span>Body</span></p>
+                                                <textarea id="postBody" class="text-area" name="postBody" rows="10"
+                                                    cols="60" aria-label="With textarea" placeholder="Write your secret"
+                                                    required></textarea>
+                                            </div>
+                                            <button id="btn-post-secret" class="btn-black" type="submit" name="save"
+                                                value="1">Post
+                                                secret</button>
+                                </form>
+                                <a href="/choosetype">Go back</a>
+                            </div>
+                            <% } %>
+
+                                <script src="/post.js" async defer></script>
+    </body>
+
+    <%- include("partials/footer") -%>

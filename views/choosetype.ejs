@@ -1,0 +1,17 @@
+<%- include("partials/header"); -%>
+
+    <body>
+        <div class="div-flex-col choosetype">
+            <h1 class="h1-black" style="font-family: 'Dancing Script', cursive;margin-top: 8rem;">Choose type -
+            </h1>
+            <form action="/post" method="get" class="form-btns">
+                <button class="btn-white" type="submit" name="type" value="dTP">Dedicate it to a
+                    person</button>
+                <button class="btn-white" type="submit" name="type" value="sAS">Share it as a
+                    statement</button>
+            </form>
+            <a href="/">Home</a>
+        </div>
+    </body>
+
+    <%- include("partials/footer"); -%>

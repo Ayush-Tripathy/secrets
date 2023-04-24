@@ -1,0 +1,100 @@
+<%- include("partials/header"); -%>
+
+    <body>
+        <section id="section1">
+            <!-- <img id="img-key" src="./public/images/key-nobg.png" alt="key-image" srcset=""> -->
+            <img id="img-curved-line" src="/images/curved-arrow.png"></img>
+            <div class="floating-div">
+                <p>
+                    I like to stick my nose in the grocery store freezers and breathe in really deep.
+                </p>
+                <div class="grey-bg"></div>
+            </div>
+            <h1 id="h1-secrets">Secrets</h1>
+            <form action="/choosetype" method="get">
+                <button id="btn-tell-secret" class="btn-black" type="submit" name="tellasecret"
+                    value="1">Confess</button>
+            </form>
+            <form action="/secrets" method="get">
+                <button class="btn-white" type="submit" name="explore" value="1">Explore secrets</button>
+            </form>
+            <form action="/custompathcreate" method="get">
+                <button id="btn-create-custom-link" class="btn-white" type="submit" name="createcustomlink"
+                    value="1">Create your own link</button>
+            </form>
+            <p class="floating-text"><u>Confess</u> anything <br> &nbsp;&nbsp;&nbsp;&nbsp;<u>without</u> letting anyone
+                know <br> that
+                it was <u>you</u></p>
+            <p class="floating-text-1168"><u>Confess</u> anything <br><u>without</u> letting
+                anyone
+                know <br> that
+                it was <u>you</u></p>
+            <div class="div-scroll-down">
+                <a href="#section2" class="updown">Scroll down</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                    class="bi bi-chevron-double-down updown" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    <path fill-rule="evenodd"
+                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="section2">
+            <h1 class="h1-quote">"Man is not what he thinks he is,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;he is what he hides."
+            </h1>
+            <h1 class="h1-quote-2">"Man is not what he thinks he is,<br>
+                he is what he hides."
+            </h1>
+            <p> -André Malraux</p>
+        </section>
+
+        <section id="section3">
+            <h2 id="h2-made-by">Made by - </h2>
+            <h1 id="h1-creator-name">Ayush Tripathy</h1>
+            <span class="span-contact">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-github"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+                <a href="https://github.com/Ayush-Tripathy">
+                    github.com/Ayush-Tripathy
+                </a>
+            </span>
+
+            <div class="div-v-dashed-arrow">
+                <div class="div-dashed"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                    class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+
+        </section>
+
+        <section id="contact-us">
+            <img class="img-floating-left" src="/images/bird-with-trail.png" alt="bird image" />
+            <form class="contact-form" action="/contactus" method="post">
+                <div class="contact-form-left-side">
+                    <p>Let's get in touch</p>
+                    <img src="/images/contact-us.jpg" alt="contact-us" />
+                </div>
+                <div class="contact-form-right-side">
+                    <input class="" type="text" name="contactName" value="" placeholder="Your name" required />
+                    <input class="" type="email" name="contactEmail" value="" placeholder="Email" required />
+                    <input class="" type="text" name="contactSubject" value="" placeholder="Subject" required />
+                    <textarea class="" name="contactBody" rows="10" cols="15" placeholder="Write your message here"
+                        required></textarea>
+                    <button class="btn-black" type="submit" name="sendmessage" value="1">Send Message</button>
+                </div>
+            </form>
+            <img class="img-floating-right" src="/images/paper-plane.png" alt="paper plane image" />
+        </section>
+        <script src="/index.js" async defer></script>
+    </body>
+
+    <%- include("partials/footer"); -%>
