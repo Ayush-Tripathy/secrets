@@ -12,8 +12,15 @@ const port = 3001;
 
 var connectedToDB = false;
 
+const username = "ayushtripathy547";
+const DB_NAME = "secretsDB";
+
+const MONGODB_URL = `mongodb+srv://${username}:${process.env.MONGODB_PASS}@cluster0.gnkjn1v.mongodb.net/${DB_NAME}`;
+
+const localDB_URL = "mongodb://localhost:27017/newDB";
+
 async function connectMongo() {
-    await mongoose.connect("mongodb://localhost:27017/newDB", { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 connectMongo().then(() => {
@@ -21,7 +28,7 @@ connectMongo().then(() => {
     connectedToDB = true;
 }).catch((err) => {
     connectedToDB = false;
-    console.log("Can't connect");
+    console.log("Can't connect to Database.");
     console.log(err);
 });
 
@@ -42,7 +49,7 @@ app.use("/", router);
 
 
 app.listen(process.env.PORT || port, () => {
-    console.log(`Server started on port ${port}`);
+    console.log(`Server started on port ${process.env.PORT || port}`);
 });
 
 module.exports = connectedToDB;
