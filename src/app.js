@@ -12,15 +12,10 @@ const port = 3001;
 
 var connectedToDB = false;
 
-const username = "ayushtripathy547";
-const DB_NAME = "secretsDB";
-
-const MONGODB_URL = `mongodb+srv://${username}:${process.env.MONGODB_PASS}@cluster0.gnkjn1v.mongodb.net/${DB_NAME}`;
-
 const localDB_URL = "mongodb://localhost:27017/newDB";
 
 async function connectMongo() {
-    await mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 connectMongo().then(() => {
