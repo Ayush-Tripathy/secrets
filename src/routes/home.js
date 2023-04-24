@@ -1,9 +1,8 @@
-require("dotenv").config();
 
 const express = require("express");
 const nodemailer = require("nodemailer");
-const connectedToDB = require("../app.js");
 const ejs = require("ejs");
+const mongoose = require("mongoose");
 const Secret = require("../models/Secrets.js");
 const CustomPath = require("../models/CustomPath.js");
 const DirectedMessages = require("../models/DirectedMessages.js");
@@ -12,6 +11,23 @@ const path = require("path");
 
 const DOMAIN = "http://localhost:3001";
 const EMAIL = "secrets.mail.ra@gmail.com";
+
+var connectedToDB = false;
+
+const localDB_URL = "mongodb://localhost:27017/newDB";
+
+async function connectMongo() {
+    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+}
+
+connectMongo().then(() => {
+    console.log("Connected to MongoDB");
+    connectedToDB = true;
+}).catch((err) => {
+    connectedToDB = false;
+    console.log("Can't connect to Database.");
+    console.log(err);
+});
 
 const router = express.Router();
 
