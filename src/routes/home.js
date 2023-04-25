@@ -8,6 +8,7 @@ const CustomPath = require("../models/CustomPath.js");
 const DirectedMessages = require("../models/DirectedMessages.js");
 const ListCustomPaths = require("../models/ListCustomPaths.js");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const DOMAIN = "https://secretsio.cyclic.app";
 const EMAIL = "secrets.mail.ra@gmail.com";
@@ -16,9 +17,9 @@ var connectedToDB = false;
 
 const local_DOMAIN = "http://localhost:3001";
 const localDB_URL = "mongodb://localhost:27017/newDB";
-
+//process.env.MONGODB_URI
 async function connectMongo() {
-    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(localDB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 connectMongo().then(() => {
@@ -171,11 +172,12 @@ router.post("/contactus", (req, res) => {
 });
 
 router.get("/custompathcreate", (req, res) => {
+    //console.log(req.cookies);
     res.render("custompathcreate");
 });
 
 router.get("/custompath/adm/:path", async (req, res) => {
-
+    //console.log(req.cookies);
     const pathName = req.params.path.split(" ").join("%20");
     const name = req.params.path;
     const id = req.query.p;
@@ -211,6 +213,7 @@ router.get("/custompath/adm/:path", async (req, res) => {
 });
 
 router.post("/custompath", async (req, res) => {
+
     const pathName = req.body.custompathName.split(" ").join("%20");
 
     const customPath = new CustomPath({
@@ -228,6 +231,7 @@ router.post("/custompath", async (req, res) => {
 
         admLinkObj.save().then((saved2) => {
             const admLink = "/custompath/adm/" + pathName + "?p=" + saved2._id;
+            res.cookie("customurl", admLink, { expire: 86400000 + Date.now() });
             res.redirect(admLink);
         }).catch((err) => {
             console.log("Some error occurred while saving admLinkObj: " + err);
@@ -245,9 +249,24 @@ router.get("/custompath/:path", async (req, res) => {
     const name = req.params.path;
     const id = req.query.serial;
 
+    var L_C_P_ID = "";
+    if (req.cookies.customurl != undefined) {
+        L_C_P_ID = req.cookies.customurl.split("=")[1];
+    }
+    //console.log(L_C_P_ID)
+
     await CustomPath.findOne({ _id: id }).then((doc) => {
         if (doc.path == path) {
-            res.render("customlink", { success: false, sa: true, notfound: false, error: false, path: path, serial: id, name: name });
+
+            ListCustomPaths.findOne({ id: id }).then(d2 => {
+                //console.log(d2._id);
+                if (d2 != null && d2._id == L_C_P_ID) {
+                    res.redirect(req.cookies.customurl);
+                }
+                else {
+                    res.render("customlink", { success: false, sa: true, notfound: false, error: false, path: path, serial: id, name: name });
+                }
+            });
         }
         else {
             res.render("customlink", { success: false, sa: false, notfound: true, error: false, path: path, serial: id, name: name });

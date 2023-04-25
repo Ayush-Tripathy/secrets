@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const router = require("./routes/home.js");
 
@@ -17,6 +18,8 @@ app.set('views', path.join(__dirname, '../views'));
 
 app.set('view engine', 'ejs');
 
+
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
