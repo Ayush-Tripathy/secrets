@@ -19,7 +19,7 @@ const local_DOMAIN = "http://localhost:3001";
 const localDB_URL = "mongodb://localhost:27017/newDB";
 //process.env.MONGODB_URI
 async function connectMongo() {
-    await mongoose.connect(localDB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 connectMongo().then(() => {
