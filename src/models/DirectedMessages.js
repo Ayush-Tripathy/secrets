@@ -8,6 +8,6 @@ const directedMessagesSchema = mongoose.Schema({
     },
 });
 
-// directedMessagesSchema.path('TTLField').index({ expires: 86400 });
+directedMessagesSchema.path('date').index({ expires: "1d" });
 
 module.exports = mongoose.model("directedMessages", directedMessagesSchema);

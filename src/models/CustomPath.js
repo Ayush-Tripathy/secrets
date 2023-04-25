@@ -7,6 +7,6 @@ const custompathSchema = new mongoose.Schema({
     },
 });
 
-// custompathSchema.path('TTLField').index({ expires: 86400 });
+custompathSchema.path('date').index({ expires: "1d" });
 
 module.exports = mongoose.model("customPath", custompathSchema);
