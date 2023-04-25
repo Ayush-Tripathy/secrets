@@ -9,11 +9,12 @@ const DirectedMessages = require("../models/DirectedMessages.js");
 const ListCustomPaths = require("../models/ListCustomPaths.js");
 const path = require("path");
 
-const DOMAIN = "http://localhost:3001";
+const DOMAIN = "https://secretsio.cyclic.app";
 const EMAIL = "secrets.mail.ra@gmail.com";
 
 var connectedToDB = false;
 
+const local_DOMAIN = "http://localhost:3001";
 const localDB_URL = "mongodb://localhost:27017/newDB";
 
 async function connectMongo() {
