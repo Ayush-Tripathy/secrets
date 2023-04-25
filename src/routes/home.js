@@ -230,9 +230,11 @@ router.post("/custompath", async (req, res) => {
             res.redirect(admLink);
         }).catch((err) => {
             console.log("Some error occurred while saving admLinkObj: " + err);
+            res.render("invalid", { message: "Some Error occured.", imgSrc: "/images/error.png" });
         });
     }).catch((err) => {
-        console.log(err);
+        console.log("Some error occurred while saving customPathObj:" + err);
+        res.render("invalid", { message: "Some Error occured.", imgSrc: "/images/error.png" });
     });
 
 });
@@ -279,7 +281,7 @@ router.post("/custompath/:path", async (req, res) => {
 });
 
 router.get('*', function (req, res) {
-    res.render("invalid");
+    res.render("invalid", { message: "Link is invalid", imgSrc: "/images/invalid.jpg" });
 })
 
 module.exports = router;
