@@ -231,7 +231,9 @@ router.post("/custompath", async (req, res) => {
 
         admLinkObj.save().then((saved2) => {
             const admLink = "/custompath/adm/" + pathName + "?p=" + saved2._id;
-            res.cookie("customurl", admLink, { expire: 86400000 + Date.now() });
+
+            var after1day = new Date(new Date().getTime() + (1000 * 60 * 60 * 24));
+            res.cookie("customurl", admLink, { expire: after1day });
             res.redirect(admLink);
         }).catch((err) => {
             console.log("Some error occurred while saving admLinkObj: " + err);
