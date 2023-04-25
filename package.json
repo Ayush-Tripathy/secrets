@@ -4,7 +4,7 @@
   "description": "Share your secrets anounymously\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001bnymously",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ayush Tripathy",
