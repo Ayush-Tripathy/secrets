@@ -791,6 +791,10 @@ hr {
     display: none;
 }
 
+.post-text {
+    white-space: pre-wrap;
+}
+
 @media only screen and (max-width: 1168px) {
     #img-curved-line {
         display: none;
