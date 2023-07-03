@@ -13,23 +13,7 @@ const cookieParser = require("cookie-parser");
 const DOMAIN = "https://secretsio.cyclic.app";
 const EMAIL = "secrets.mail.ra@gmail.com";
 
-var connectedToDB = false;
-
-const local_DOMAIN = "http://localhost:3001";
-const localDB_URL = "mongodb://localhost:27017/newDB";
-//process.env.MONGODB_URI
-async function connectMongo() {
-    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-}
-
-connectMongo().then(() => {
-    console.log("Connected to MongoDB");
-    connectedToDB = true;
-}).catch((err) => {
-    connectedToDB = false;
-    console.log("Can't connect to Database.");
-    console.log(err);
-});
+let connectedToDB = require('../app.js');
 
 const router = express.Router();
 
