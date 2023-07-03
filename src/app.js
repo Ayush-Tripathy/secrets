@@ -42,7 +42,7 @@ const localDB_URL = "mongodb://localhost:27017/newDB";
 async function connectMongo() {
     await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 }
-console.log("hi!");
+console.log("Hello!");
 
 (async () => {
     try {
