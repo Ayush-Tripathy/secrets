@@ -39,7 +39,7 @@ const databaseURI = (
     process.env.NODE_ENV === "production" ?
         process.env.MONGODB_URI :
         process.env.LOCAL_MONGODB_URI);
-console.log(databaseURI);
+
 async function connectMongo() {
     await mongoose.connect(databaseURI, { useNewUrlParser: true, useUnifiedTopology: true });
 }
