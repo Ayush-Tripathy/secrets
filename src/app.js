@@ -41,7 +41,7 @@ const databaseURI = (
         process.env.LOCAL_MONGODB_URI);
 
 async function connectMongo() {
-    await mongoose.connect(databaseURI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 console.log("Hello!");
 

@@ -71,9 +71,11 @@ const contactUs = (req, res) => {
         secure: true,
         service: 'gmail',
         auth: {
-            type: "login",
+            type: "OAuth2",
             user: process.env.SECRETS_EMAIL,
-            pass: process.env.GOOGLE_APP_KEY
+            clientId: process.env.SECRETS_CLIENT_ID,
+            clientSecret: process.env.SECRETS_CLIENT_SECRET,
+            refreshToken: process.env.SECRETS_REFRESH_TOKEN
         }
     });
 
